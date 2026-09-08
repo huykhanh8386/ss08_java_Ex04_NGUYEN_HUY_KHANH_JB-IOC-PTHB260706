@@ -1,0 +1,51 @@
+import java.util.Scanner;
+public class Ex04Session08Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("\n========== RIKKEI FINANCE ==========");
+            System.out.println("Tỷ giá hiện tại: " +  Ex04Session08.exchangeRate + " VNĐ/USD");
+            System.out.println("1. Đổi USD sang VNĐ");
+            System.out.println("2. Đổi VNĐ sang USD");
+            System.out.println("3. Cập nhật tỷ giá");
+            System.out.println("0. Thoát");
+            System.out.println("====================================");
+            System.out.print("Nhập lựa chọn: ");
+            choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    System.out.print("Nhập số tiền USD: ");
+                    double usd = Double.parseDouble(scanner.nextLine());
+                    if (usd < 0) {
+                        System.out.println("Số tiền không được âm!");
+                        break;
+                    }
+                    double vnd =  Ex04Session08.toVND(usd);
+                    System.out.printf("%,.2f USD = %,.2f VNĐ%n", usd, vnd);
+                    break;
+                case 2:
+                    System.out.print("Nhập số tiền VNĐ: ");
+                    double inputVnd = Double.parseDouble(scanner.nextLine());
+                    if (inputVnd < 0) {
+                        System.out.println("Số tiền không được âm!");
+                        break;
+                    }
+                    double outputUsd =  Ex04Session08.toUSD(inputVnd);
+                    System.out.printf("%,.2f VNĐ = %,.2f USD%n", inputVnd, outputUsd);
+                    break;
+                case 3:
+                    System.out.print("Nhập tỷ giá mới: ");
+                    double newRate = Double.parseDouble(scanner.nextLine());
+                    Ex04Session08.setExchangeRate(newRate);
+                    System.out.printf("Tỷ giá mới: 1 USD = %,.2f VNĐ%n",  Ex04Session08.exchangeRate);
+                    break;
+                case 0:
+                    System.out.println("Đã thoát chương trình!");
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+            }
+        } while (choice != 0);
+    }
+}
