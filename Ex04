@@ -1,0 +1,16 @@
+public class Ex04Session08 {
+    public static double exchangeRate = 25450.0;
+    public static double toVND(double usd) {
+        return usd * exchangeRate;
+    }
+    public static double toUSD(double vnd) {
+        return vnd / exchangeRate;
+    }
+    public static void setExchangeRate(double rate) {
+        if (rate > 0) {
+            exchangeRate = rate;
+        } else {
+            System.out.println("Tỷ giá không hợp lệ!");
+        }
+    }
+}
